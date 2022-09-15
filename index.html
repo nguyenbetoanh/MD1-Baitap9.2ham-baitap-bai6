@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="nhap" type="text">
+<button onclick="checkKQ()">check</button>
+<h1 id="ht"></h1>
+<script>
+    function checkKQ() {
+        let tuCanCheck = document.getElementById('nhap').value
+        let arr1 = tuCanCheck.split("")
+        let arr2 = tuCanCheck.split("").reverse()
+        let arr3 = tuCanCheck.split("")
+        let arr4 = tuCanCheck.split("").reverse()
+        let kq
+        arr4.splice((arr3.length / 2), 0, "F")
+        arr3.splice((arr3.length / 2), 0, "F")
+        if (tuCanCheck.indexOf(".") !== -1||tuCanCheck===""||tuCanCheck.indexOf(",") !== -1) {
+            alert('không được có kí tự "," hoặc dấu "." ')
+        } else if (tuCanCheck.length % 2 === 0) {
+            for (let i = 0; i < tuCanCheck.length + 1; i++) {
+                if (arr3[i].toLowerCase() !== arr4[i].toLowerCase()) {
+                    kq = "không là 1  chuỗi palindrome"
+                    break;
+                } else
+                    kq = "là 1  chuỗi palindrome"
+                break
+            }
+        } else {
+            for (let i = 0; i < tuCanCheck.length; i++) {
+                if (arr1[i].toLowerCase() !== arr2[i].toLowerCase()) {
+                    kq = "không là 1  chuỗi palindrome"
+                    break;
+                } else
+                    kq = "là 1  chuỗi palindrome"
+                break
+            }
+        }
+        document.getElementById('ht').innerHTML=kq
+    }
+</script>
+</body>
+</html>
